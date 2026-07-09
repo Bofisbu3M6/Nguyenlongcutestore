@@ -1,0 +1,21 @@
+Nguyenlong-LiOS-Store/
+│
+├── index.html
+├── style.css
+├── script.js
+│
+├── assets/
+│   ├── logo.png
+│   ├── banner.png
+│   ├── bg.jpg
+│   └── products/
+│
+├── pages/
+│   ├── shop.html
+│   ├── product.html
+│   ├── cart.html
+│   ├── checkout.html
+│   ├── login.html
+│   └── profile.html
+│
+└── icons/
