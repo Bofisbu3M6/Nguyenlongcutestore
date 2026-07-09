@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Hồ sơ | Nguyenlong メ LiOS Store</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#08111f;
+color:white;
+}
+
+header{
+background:#101c32;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.container{
+width:90%;
+max-width:1000px;
+margin:40px auto;
+display:grid;
+grid-template-columns:300px 1fr;
+gap:30px;
+}
+
+.left{
+
+background:#101c32;
+
+border-radius:20px;
+
+padding:30px;
+
+text-align:center;
+
+}
+
+.left img{
+
+width:150px;
+
+height:150px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:5px solid #00bfff;
+
+}
+
+.left h2{
+
+margin-top:20px;
+
+}
+
+.left p{
+
+margin-top:10px;
+
+color:#ccc;
+
+}
+
+.right{
+
+background:#101c32;
+
+padding:30px;
+
+border-radius:20px;
+
+}
+
+.input{
+
+margin-bottom:20px;
+
+}
+
+.input label{
+
+display:block;
+
+margin-bottom:8px;
+
+}
+
+.input input{
+
+width:100%;
+
+padding:14px;
+
+background:#182743;
+
+border:none;
+
+border-radius:10px;
+
+color:white;
+
+}
+
+button{
+
+padding:15px 25px;
+
+border:none;
+
+background:#00bfff;
+
+color:white;
+
+border-radius:10px;
+
+cursor:pointer;
+
+margin-right:10px;
+
+}
+
+button:hover{
+
+background:#0095ff;
+
+}
+
+.logout{
+
+background:#ff4444;
+
+}
+
+.logout:hover{
+
+background:#ff0000;
+
+}
+
+@media(max-width:800px){
+
+.container{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h2>Nguyenlong メ LiOS Store</h2>
+
+<a href="../index.html" style="color:white;text-decoration:none;">
+Trang chủ
+</a>
+
+</header>
+
+<div class="container">
+
+<div class="left">
+
+<img src="../assets/avatar.png" id="avatar">
+
+<h2 id="username">
+Người dùng
+</h2>
+
+<p id="email">
+example@gmail.com
+</p>
+
+</div>
+
+<div class="right">
+
+<div class="input">
+
+<label>Họ và tên</label>
+
+<input id="name">
+
+</div>
+
+<div class="input">
+
+<label>Email</label>
+
+<input id="mail">
+
+</div>
+
+<div class="input">
+
+<label>Số điện thoại</label>
+
+<input id="phone">
+
+</div>
+
+<div class="input">
+
+<label>Mật khẩu mới</label>
+
+<input id="password" type="password">
+
+</div>
+
+<button id="save">
+
+Lưu thay đổi
+
+</button>
+
+<button class="logout" id="logout">
+
+Đăng xuất
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+let user=JSON.parse(localStorage.getItem("currentUser"))||{
+
+name:"Khách",
+
+email:"Chưa đăng nhập",
+
+phone:""
+
+};
+
+document.getElementById("username").innerHTML=user.name;
+
+document.getElementById("email").innerHTML=user.email;
+
+document.getElementById("name").value=user.name;
+
+document.getElementById("mail").value=user.email;
+
+document.getElementById("phone").value=user.phone||"";
+
+document.getElementById("save").onclick=function(){
+
+user.name=document.getElementById("name").value;
+
+user.email=document.getElementById("mail").value;
+
+user.phone=document.getElementById("phone").value;
+
+let pass=document.getElementById("password").value;
+
+if(pass!=""){
+
+user.password=pass;
+
+}
+
+localStorage.setItem(
+
+"currentUser",
+
+JSON.stringify(user)
+
+);
+
+alert("Đã lưu thông tin.");
+
+};
+
+document.getElementById("logout").onclick=function(){
+
+localStorage.removeItem("login");
+
+localStorage.removeItem("currentUser");
+
+location.href="login.html";
+
+};
+
+</script>
+
+</body>
+
+</html>
